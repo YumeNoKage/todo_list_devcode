@@ -117,3 +117,12 @@
 
 /* Cursor Style */
 .cursor-pointed { cursor:pointer; }
+
+/* Modal Backdrop */
+.modal, .z-50 {
+    z-index: 50 !important;
+}
+
+.modal-backdrop {
+    z-index: 49 !important;
+}
