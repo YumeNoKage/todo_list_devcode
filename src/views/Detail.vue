@@ -118,76 +118,77 @@
         <div class="col-12" v-if="data != null">
             <Detail :showLoading="isLoading" ref="ListTodo" :dataParent="todo_items" @editData="matchFormTodo($event)" @update:Parent="updateParent()"/>
         </div>
-    </div>
-
-    <!-- modal add todo -->
-    <div class="modal fade" id="addTodo" tabindex="-1" aria-labelledby="addTodoLabel" aria-hidden="true" data-cy="modal-add">
-        <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
-            <div class="modal-content rounded-12 border-0">
-                <div class="modal-header">
-                    <h5 class="modal-title font-18 fw-custome-600 text-custome-black" data-cy="modal-add-title">Tambah List Item</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-cy="modal-add-close-button"></button>
-                </div>
-                <div class="modal-body px-0">
-                    <form @submit.prevent="todo.id ? updateTodo() : addTodo()">
-                        <div class="mb-3 modal-body py-0">
-                            <label class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-name-title">NAMA LIST ITEM</label>
-                            <input v-model="todo.title" type="text" class="form-control font-custome-16 fw-custome-400 text-custome-black px-3 py-3" id="inputNameItem" placeholder="Tambahkan nama list item" data-cy="modal-add-name-input" required>
-                        </div>
-                        <div class="mb-3 modal-body py-0">
-                            <label for="property" class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-priority-title">PRIORITY</label>
-                            <div class="dropdown">
-                                <div class="d-flex position-relative col-lg-6 col-md-8 col-sm-8 input-dropdown" data-bs-toggle="dropdown" aria-expanded="false" data-cy="modal-add-priority-dropdown">
-                                    <div style="width: 14px; height: 14px; transform: translatey(-50%)" :class="`rounded-circle bg-custome-${todo.color} position-absolute top-50 ms-3`"></div>
-                                    <input type="text" class="form-control font-16 fw-custome-400 text-custome-black ps-5 pe-3 py-3 dropdown-toggle" :value="todo.priority_name" readonly placeholder="Pilih priority" id="property" required>
-                                    <span style="transform: translatey(-50%)" class="position-absolute top-50 end-0 me-3 chevron"><img src="../assets/icons/chevron-down.svg" alt="chevron"></span>
-                                </div>
-                                <ul class="dropdown-menu py-0 rounded-12" style="min-width: 205px">
-                                    <li>
-                                        <div class="dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom border-top-12" style="background-color: #E5E5E5;" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="ms-3">Pilih priority</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li v-for="(item, i) in getPriority(null, 'option')" :key="i">
-                                        <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" data-cy="modal-add-priority-item">
-                                            <div class="d-flex align-items-center">
-                                                <div style="width: 14px; height: 14px;" :class="`rounded-circle bg-custome-${item.color}`"></div>
-                                                <span class="ms-3">{{item.name}}</span>
-                                            </div>
-                                            <div v-if="todo.priority_name == item.name">
-                                                <img src="../assets/icons/check.svg" alt="checked">
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+        
+        <!-- modal add todo -->
+        <div class="modal fade" id="addTodo" tabindex="-1" aria-labelledby="addTodoLabel" aria-hidden="true" data-cy="modal-add">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">
+                <div class="modal-content rounded-12 border-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-18 fw-custome-600 text-custome-black" data-cy="modal-add-title">Tambah List Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-cy="modal-add-close-button"></button>
+                    </div>
+                    <div class="modal-body px-0">
+                        <form @submit.prevent="todo.id ? updateTodo() : addTodo()">
+                            <div class="mb-3 modal-body py-0">
+                                <label class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-name-title">NAMA LIST ITEM</label>
+                                <input v-model="todo.title" type="text" class="form-control font-custome-16 fw-custome-400 text-custome-black px-3 py-3" id="inputNameItem" placeholder="Tambahkan nama list item" data-cy="modal-add-name-input" required>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-bs-dismiss="modal" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
-                        </div>
-                    </form>
+                            <div class="mb-3 modal-body py-0">
+                                <label for="property" class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-priority-title">PRIORITY</label>
+                                <div class="dropdown">
+                                    <div class="d-flex position-relative col-lg-6 col-md-8 col-sm-8 input-dropdown" data-bs-toggle="dropdown" aria-expanded="false" data-cy="modal-add-priority-dropdown">
+                                        <div style="width: 14px; height: 14px; transform: translatey(-50%)" :class="`rounded-circle bg-custome-${todo.color} position-absolute top-50 ms-3`"></div>
+                                        <input type="text" class="form-control font-16 fw-custome-400 text-custome-black ps-5 pe-3 py-3 dropdown-toggle" :value="todo.priority_name" readonly placeholder="Pilih priority" id="property" required>
+                                        <span style="transform: translatey(-50%)" class="position-absolute top-50 end-0 me-3 chevron"><img src="../assets/icons/chevron-down.svg" alt="chevron"></span>
+                                    </div>
+                                    <ul class="dropdown-menu py-0 rounded-12" style="min-width: 205px">
+                                        <li>
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom border-top-12" style="background-color: #E5E5E5;" >
+                                                <div class="d-flex align-items-center">
+                                                    <span class="ms-3">Pilih priority</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li v-for="(item, i) in getPriority(null, 'option')" :key="i">
+                                            <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" data-cy="modal-add-priority-item">
+                                                <div class="d-flex align-items-center">
+                                                    <div style="width: 14px; height: 14px;" :class="`rounded-circle bg-custome-${item.color}`"></div>
+                                                    <span class="ms-3">{{item.name}}</span>
+                                                </div>
+                                                <div v-if="todo.priority_name == item.name">
+                                                    <img src="../assets/icons/check.svg" alt="checked">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-bs-dismiss="modal" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- modal information -->
-    <div class="modal fade" id="updateTitleNotif" tabindex="-1" aria-labelledby="updateTitleNotifLabel" aria-hidden="true" data-cy="modal-information">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-12 border-0">
-                <div class="modal-body border-0">
-                    <div class="desc text-left">
-                        <span class="font-14 fw-custome-500 text-custome-black">
-                            <img src="../assets/icons/info.svg" class="to-red me-2">
-                            {{message}}
-                        </span>
+        <!-- modal information -->
+        <div class="modal fade" id="updateTitleNotif" tabindex="-1" aria-labelledby="updateTitleNotifLabel" aria-hidden="true" data-cy="modal-information">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-12 border-0">
+                    <div class="modal-body border-0">
+                        <div class="desc text-left">
+                            <span class="font-14 fw-custome-500 text-custome-black">
+                                <img src="../assets/icons/info.svg" class="to-red me-2">
+                                {{message}}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -220,21 +221,19 @@
                 const realData = this.data.todo_items
                 let newData
 
-                if (!this.dataReversed && (newValue == 'oldest' || newValue == 'za')) {
+                if (!this.dataReversed && (newValue == 'oldest' || newValue == 'za' || newValue == 'unfinished')) {
                     newData = realData.reverse()
                     this.dataReversed = true
-                } else if (!this.dataReversed && (newValue == 'unfinished' || newValue == 'latest' || newValue == 'az')){
+                } else if (!this.dataReversed && (newValue == 'latest' || newValue == 'az')){
                     newData = realData
                     this.dataReversed = false
-                } else if (this.dataReversed && (newValue == 'oldest' || newValue == 'za')){
+                } else if (this.dataReversed && (newValue == 'unfinished' || newValue == 'oldest' || newValue == 'za')){
                     newData = realData
                     this.dataReversed = true
-                } else if (this.dataReversed && (newValue == 'unfinished' || newValue == 'latest' || newValue == 'az')){
+                } else if (this.dataReversed && (newValue == 'latest' || newValue == 'az')){
                     newData = realData.reverse()
                     this.dataReversed = false
                 }
-
-                console.table(newData)
 
                 this.todo_items = newData
             }
