@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-bs-dismiss="modal" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
+                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
                             </div>
                         </form>
                     </div>
