@@ -42,7 +42,7 @@
                 
                 <div class="d-flex">
                     <div class="dropdown me-4">
-                        <div class="d-flex position-relative col-lg-6 col-md-8 col-sm-8 input-dropdown" data-bs-toggle="dropdown" aria-expanded="false" data-cy="modal-add-priority-dropdown">
+                        <div class="d-flex position-relative col-lg-6 col-md-8 col-sm-8 input-dropdown" data-bs-toggle="dropdown" aria-expanded="false" data-cy="todo-sort-button">
                             <span class="border rounded-circle">
                                 <img class="p-3" src="../assets/icons/arrows-sort.svg" alt="sort">
                             </span>
@@ -60,7 +60,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'oldest'" data-cy="sort-oldest">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'oldest'" data-cy="sort-selection">
                                     <div class="d-flex align-items-center">
                                         <span><img src="../assets/icons/arrow-sort-asc.svg" alt="sort asc"></span>
                                         <span class="ms-3">Terlama</span>
@@ -71,7 +71,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'az'" data-cy="sort-az">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'az'" data-cy="todo-sort-button">
                                     <div class="d-flex align-items-center">
                                         <span><img src="../assets/icons/arrow-sort-az.svg" alt="sort az"></span>
                                         <span class="ms-3">A-Z</span>
@@ -82,7 +82,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'za'" data-cy="sort-za">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'za'" data-cy="todo-sort-button">
                                     <div class="d-flex align-items-center">
                                         <span><img src="../assets/icons/arrow-sort-za.svg" alt="sort za"></span>
                                         <span class="ms-3">Z-A</span>
@@ -151,7 +151,7 @@
                                         </div>
                                     </li>
                                     <li v-for="(item, i) in getPriority(null, 'option')" :key="i">
-                                        <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" :data-cy="`modal-add-priority-${item.value}`">
+                                        <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" :data-cy="`modal-add-priority-dropdown`">
                                             <div class="d-flex align-items-center">
                                                 <div style="width: 14px; height: 14px;" :class="`rounded-circle bg-custome-${item.color}`"></div>
                                                 <span class="ms-3">{{item.name}}</span>
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-bs-dismiss="modal" data-cy="todo-add-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
+                            <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-bs-dismiss="modal" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -245,7 +245,7 @@
                         this.message = 'Activity berhasil diupdate'
                         
                         $('#updateTitleNotif').modal('show');
-                        this.getDetail(`activity-groups/${this.$route.params.id}`)
+                        this.getDetail(`activity-groups/${this.$route.params.id}`,null)
                         
                         setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},2000)
                     }
@@ -264,7 +264,7 @@
                     }
                     const response = await this.postData(data);
                     if (response.status == 201) {
-                        this.getDetail(`activity-groups/${this.$route.params.id}`)
+                        this.getDetail(`activity-groups/${this.$route.params.id}`, null)
                         
                         $('#addTodo').modal('hide');
                         
@@ -298,7 +298,7 @@
                     }
                     const response = await this.updateData(data);
                     if (response.status == 200) {
-                        this.getDetail(`activity-groups/${this.$route.params.id}`)
+                        this.getDetail(`activity-groups/${this.$route.params.id}`, null)
                         this.message = 'Todo berhasil diupdate'
                         
                         $('#updateTitleNotif').modal('show');
@@ -333,12 +333,12 @@
             updateParent(){
                 this.data = null
                 this.message = null
-                this.getDetail(`activity-groups/${this.$route.params.id}`)
+                this.getDetail(`activity-groups/${this.$route.params.id}`, null)
             }
         },
 
-        created(){
-            this.getDetail(`activity-groups/${this.$route.params.id}`)
+        mounted(){
+            this.getDetail(`activity-groups/${this.$route.params.id}`, null)
         }
     }
         
