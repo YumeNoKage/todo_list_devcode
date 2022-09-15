@@ -210,6 +210,7 @@
                     title: null,
                 },
                 filter: 'latest',
+                dataReversed: false,
                 message: null,
             }
         },
@@ -217,14 +218,23 @@
         watch:{
             'filter': function(newValue, oldValue){
                 const realData = this.data.todo_items
-                console.table(newValue, oldValue)
-                console.table(realData)
-                let newData 
-                if ((newValue == 'oldest' || newValue == 'za') || (oldValue == 'oldest' || oldValue == 'za')) {
+                let newData
+
+                if (!this.dataReversed && (newValue == 'oldest' || newValue == 'za')) {
                     newData = realData.reverse()
-                } else {
+                    this.dataReversed = true
+                } else if (!this.dataReversed && (newValue == 'unfinished' || newValue == 'latest' || newValue == 'az')){
                     newData = realData
+                    this.dataReversed = false
+                } else if (this.dataReversed && (newValue == 'oldest' || newValue == 'za')){
+                    newData = realData
+                    this.dataReversed = true
+                } else if (this.dataReversed && (newValue == 'unfinished' || newValue == 'latest' || newValue == 'az')){
+                    newData = realData.reverse()
+                    this.dataReversed = false
                 }
+
+                console.table(newData)
 
                 this.todo_items = newData
             }
@@ -265,7 +275,7 @@
                         $('#updateTitleNotif').modal('show');
                         this.getDetail(`activity-groups/${this.$route.params.id}`,null)
                         
-                        setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},2000)
+                        setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},1000)
                         this.editTitle = false
                     }
                 } catch (error) {
@@ -292,7 +302,7 @@
                         
                         this.data = null
                         
-                        setTimeout(() =>{$('#updateTitleNotif').modal('hide'); this.message = null},2000)
+                        setTimeout(() =>{$('#updateTitleNotif').modal('hide'); this.message = null},1000)
                         
                         this.todo = {
                             activity_group_id: this.$route.params.id,
@@ -323,7 +333,7 @@
                         $('#updateTitleNotif').modal('show');
                         
                         this.data = null;
-                        setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},2000)
+                        setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},1000)
 
                         this.todo = {
                             activity_group_id: this.$route.params.id,
