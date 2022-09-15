@@ -30,8 +30,8 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <input type="text" v-model="data.title" class="border-0 border-bottom fw-custome-700" @keypress.enter="editTitle ? (updateDetail(), editTitle = false) : null" @blur="editTitle ? (updateDetail(), editTitle = false) : null" style="outline: none;" v-if="editTitle">
-                    <span v-else @click="editTitle = !editTitle" data-cy="todo-title">{{data.title}}</span>
+                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateDetail()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle">
+                    <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" data-cy="todo-title">{{data.title}}</label>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
                             <img width="24" src="../assets/icons/pencil.svg" alt="edit" v-if="!editTitle">
@@ -248,6 +248,7 @@
                         this.getDetail(`activity-groups/${this.$route.params.id}`,null)
                         
                         setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},2000)
+                        this.editTitle = false
                     }
                 } catch (error) {
                     console.error(error);
@@ -334,7 +335,7 @@
                 this.data = null
                 this.message = null
                 this.getDetail(`activity-groups/${this.$route.params.id}`, null)
-            }
+            },
         },
 
         mounted(){
