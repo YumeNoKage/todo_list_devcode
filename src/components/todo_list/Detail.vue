@@ -47,7 +47,7 @@
     </div>
 
     <!-- modal delete activity -->
-    <div class="modal fade" id="deleteTodo" tabindex="-1" data-bs-backdrop="static" :aria-labelledby="`deleteTodoLabel`" aria-hidden="true" data-cy="modal-delete">
+    <div class="modal fade" id="deleteTodo" tabindex="-1" :aria-labelledby="`deleteTodoLabel`" aria-hidden="true" data-cy="modal-delete">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-12 border-0">
                 <div class="modal-body border-0">
