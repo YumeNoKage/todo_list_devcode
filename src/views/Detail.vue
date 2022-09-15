@@ -337,7 +337,7 @@
             }
         },
 
-        mounted(){
+        created(){
             this.getDetail(`activity-groups/${this.$route.params.id}`)
         }
     }

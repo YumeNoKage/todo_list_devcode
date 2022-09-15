@@ -51,14 +51,14 @@
         <div class="col-12 mt-5 pt-3" v-else-if="data.length > 0 && !isLoading">
             <div class="row" data-cy="activity-item">
                 <div class="col-lg-3 col-md-4 col-sm-12 mb-4 position-relative" v-for="(item, index) in data" :key="index">
-                    <a :href="`/detail/${item.id}`" @click="$router.push(`/detail/${item.id}`)" class="card border-0 custome-box-shadow rounded-12 cursor-pointed text-decoration-none text-custome-black" data-cy="activity-item">
+                    <div  @click="$router.push(`/detail/${item.id}`)" class="card border-0 custome-box-shadow rounded-12 cursor-pointed text-decoration-none text-custome-black" data-cy="activity-item">
                         <div class="card-body d-flex align-items-end flex-column" style="min-width: 235px; min-height: 234px;">
                             <h5 class="card-title font-18 fw-custome-700 w-100" data-cy="activity-item-title"   >{{item.title}}</h5>
                             <div class="d-flex justify-content-between mt-auto w-100">
                                 <span class="font-14 text-custome-gray-medium" data-cy="activity-item-date">{{ formatDate(item.created_at,'DD MMMM yyyy') }}</span>
                             </div>
                         </div>
-                    </a>
+                    </div>
                     <button class="p-0 border-0 bg-transparent position-absolute bottom-0 end-0 pe-1 mx-4 mb-3" data-bs-target="#deleteActivity" data-bs-toggle="modal" @click="idActivity = item.id, activityName = item.title, deleteAction = true" data-cy="activity-item-delete-button">
                         <img src="../../assets/icons/trash.svg" alt="delete" width="24">
                     </button>

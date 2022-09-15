@@ -6,13 +6,3 @@
 	</div>
     <router-view/>
 </template>
-
-<script>
-export default {
-	created(){
-		$('.modal-backdrop.fade.show').on('click', ()=>{
-			$('.modal-backdrop.fade.show').removeClass('show')
-		})
-	}
-}
-</script>
