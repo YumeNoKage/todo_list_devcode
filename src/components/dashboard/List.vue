@@ -19,6 +19,7 @@
                 </div>
                 <div class="modal-footer justify-content-center border-0">
                     <button type="button" class="btn bg-custome-gray-shoft rounded-pill px-4 font-18 text-custome-gray-strong fw-custome-600" id="closeModalDelete" data-bs-dismiss="modal" data-cy="modal-delete-cancel-button">Close</button>
+                    <button type="button" v-show="false" class="btn bg-custome-gray-shoft rounded-pill px-4 font-18 text-custome-gray-strong fw-custome-600" data-bs-dismiss="modal" data-cy="activity-item-delete-button">Close</button>
                     <button type="button" class="btn bg-custome-red rounded-pill px-4 font-18 text-white fw-custome-600" @click="deleteActivity(`activity-groups/${idActivity}`)" data-cy="modal-delete-confirm-button">Hapus</button>
                 </div>
             </div>

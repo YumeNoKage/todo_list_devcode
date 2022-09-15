@@ -26,19 +26,19 @@
         <!-- header -->
         <div class="col-12" v-if="data != null" data-cy="activity-item">
             <div class="d-flex justify-content-between">
-                <h1 data-cy="activity-title" class="font-custome-36 fw-custome-700">
+                <div data-cy="activity-title" class="font-custome-36 fw-custome-700">
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
                     <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateDetail()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle" :data-cy="editTitle ? 'todo-title' : ''">
-                    <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" data-cy="todo-title">{{data.title}}</label>
+                    <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
                             <img width="24" src="../assets/icons/pencil.svg" alt="edit" v-if="!editTitle">
                             <img width="24" src="../assets/icons/close.svg" alt="edit" v-if="editTitle">
                         </button>
                     </span>
-                </h1>
+                </div>
                 
                 <div class="d-flex">
                     <div class="dropdown me-4">
@@ -142,15 +142,15 @@
                                         <span style="transform: translatey(-50%)" class="position-absolute top-50 end-0 me-3 chevron"><img src="../assets/icons/chevron-down.svg" alt="chevron"></span>
                                     </div>
                                     <ul class="dropdown-menu py-0 rounded-12" style="min-width: 205px">
-                                        <li>
+                                        <!-- <li>
                                             <div class="dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom border-top-12" style="background-color: #E5E5E5;" >
                                                 <div class="d-flex align-items-center">
                                                     <span class="ms-3">Pilih priority</span>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> -->
                                         <li v-for="(item, i) in getPriority(null, 'option')" :key="i">
-                                            <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" data-cy="modal-add-priority-item">
+                                            <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''} ${i == 0 ? 'border-top-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" data-cy="modal-add-priority-item">
                                                 <div class="d-flex align-items-center">
                                                     <div style="width: 14px; height: 14px;" :class="`rounded-circle bg-custome-${item.color}`"></div>
                                                     <span class="ms-3">{{item.name}}</span>
