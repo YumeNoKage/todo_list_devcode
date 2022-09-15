@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li data-cy="sort-selection">
                                 <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'oldest'" :data-cy="filter == 'oldest' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
                                         <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-asc.svg" alt="sort asc"></span>
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li data-cy="sort-selection">
                                 <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'az'" :data-cy="filter == 'az' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
                                         <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-az.svg" alt="sort az"></span>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li data-cy="sort-selection">
                                 <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'za'" :data-cy="filter == 'za' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
                                         <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-za.svg" alt="sort za"></span>
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li data-cy="sort-selection">
                                 <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom-12`" @click="filter= 'unfinished'" :data-cy="filter == 'unfinished' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
                                         <span data-cy="sort-selection-icon"><img src="../assets/icons/arrows-sort-unfinished.svg" alt="sort unfinished"></span>
