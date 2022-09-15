@@ -25,7 +25,7 @@
             </div>
 
             <!-- header -->
-            <div class="col-12" v-if="data != null">
+            <div class="col-12" v-if="data != null" data-cy="activity-item">
                 <div class="d-flex justify-content-between">
                     <h1 data-cy="activity-title" class="font-custome-36 fw-custome-700">
                         <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">

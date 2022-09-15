@@ -17,7 +17,7 @@
                             </div>
                         </div>
                     </router-link>
-                    <button class="p-0 border-0 bg-transparent position-absolute bottom-0 end-0 pe-1 mx-4 mb-3" data-bs-target="#deleteActivity" data-bs-toggle="modal" @click="idActivity = item.id, activityName = item.title, deleteAction = true" data-cy="activity-item-delete">
+                    <button class="p-0 border-0 bg-transparent position-absolute bottom-0 end-0 pe-1 mx-4 mb-3" data-bs-target="#deleteActivity" data-bs-toggle="modal" @click="idActivity = item.id, activityName = item.title, deleteAction = true" data-cy="activity-item-delete-button">
                         <img src="../../assets/icons/trash.svg" alt="delete" width="24">
                     </button>
                 </div>
