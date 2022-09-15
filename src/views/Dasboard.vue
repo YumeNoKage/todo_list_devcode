@@ -73,10 +73,10 @@
                 
                 if (response.status == 201 && this.$refs.ListActivity) {
                     // child modal
-                    this.$refs.ListActivity.deleteAction = false
-                    $('#deleteActivityNotif').modal('show')
+                    // this.$refs.ListActivity.deleteAction = false
+                    // $('#deleteActivityNotif').modal('show')
                     this.$refs.ListActivity.getActivity('activity-groups')
-                    setTimeout( ()=>{$('#deleteActivityNotif').modal('hide')}, 1000)
+                    // setTimeout( ()=>{$('#deleteActivityNotif').modal('hide')}, 1000)
                 }
             },
 

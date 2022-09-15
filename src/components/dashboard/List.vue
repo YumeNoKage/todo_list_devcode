@@ -33,7 +33,8 @@
                     <div class="desc text-left">
                         <span class="font-14 fw-custome-500 text-custome-black">
                             <img src="../../assets/icons/info.svg" class="to-red">
-                            Activity berhasil {{deleteAction ? 'dihapus' : 'ditambahkan'}}
+                            <!-- Activity berhasil {{deleteAction ? 'dihapus' : 'ditambahkan'}} -->
+                            Activity berhasil dihapus
                         </span>
                     </div>
                 </div>
