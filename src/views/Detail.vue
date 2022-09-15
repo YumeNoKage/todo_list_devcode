@@ -116,7 +116,7 @@
 
         <!-- list activity -->
         <div class="col-12" v-if="data != null">
-            <Detail :showLoading="isLoading" ref="ListTodo" :dataParent="data" @editData="matchFormTodo($event)" @update:Parent="updateParent()"/>
+            <Detail :showLoading="isLoading" ref="ListTodo" :dataParent="todo_items" @editData="matchFormTodo($event)" @update:Parent="updateParent()"/>
         </div>
     </div>
 
@@ -201,6 +201,7 @@
                 isLoading: false,
                 data: null,
                 editTitle: false,
+                todo_items: null,
                 todo:{
                     activity_group_id: this.$route.params.id,
                     priority: 'very-high',
@@ -208,8 +209,24 @@
                     color: 'red',
                     title: null,
                 },
-                filter: null,
+                filter: 'latest',
                 message: null,
+            }
+        },
+
+        watch:{
+            'filter': function(newValue, oldValue){
+                const realData = this.data.todo_items
+                console.table(newValue, oldValue)
+                console.table(realData)
+                let newData 
+                if ((newValue == 'oldest' || newValue == 'za') || (oldValue == 'oldest' || oldValue == 'za')) {
+                    newData = realData.reverse()
+                } else {
+                    newData = realData
+                }
+
+                this.todo_items = newData
             }
         },
 
@@ -228,6 +245,7 @@
                     if (response.status == 200) {
                         this.isLoading = false
                         this.data = response.data
+                        this.todo_items = this.data.todo_items
                     }
                 } catch (error) {
                     console.error(error);

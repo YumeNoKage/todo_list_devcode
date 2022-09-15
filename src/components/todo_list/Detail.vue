@@ -14,12 +14,12 @@
         <div class="col-12 mt-5 pt-3" v-if="isLoading" data-cy="todo-loading">
             <Loading />
         </div>
-        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data && data.todo_items.length == 0 && !isLoading">
+        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data && data.length == 0 && !isLoading">
             <img src="../../assets/illustration/todo-empty-state.svg" max-width="541" alt="todo empty state" data-cy="todo-empty-state">
         </div>
-        <div class="col-12 mt-5 pt-3" v-else-if="data && data.todo_items.length > 0 && !isLoading">
+        <div class="col-12 mt-5 pt-3" v-else-if="data && data.length > 0 && !isLoading">
             <div class="row">
-                <div class="col-12 mb-4 position-relative" v-for="(item, index) in data.todo_items" :key="index" >
+                <div class="col-12 mb-4 position-relative" v-for="(item, index) in data" :key="index" >
                     <div class="card border-0 custome-box-shadow rounded-12 text-decoration-none text-custome-black" :data-cy="`todo-item-${index}`">
                         <div class="card-body d-flex align-items-center" style="min-height: 80px;">
                             <div class="d-flex justify-content-center ms-2">
@@ -95,7 +95,7 @@
     export default {
         props:{
             showLoading: {default: false},
-            dataParent: {default: null}
+            dataParent: {default: null},
         },
         data(){
             return{
@@ -107,7 +107,7 @@
         },
 
         emits:['editData', 'update:Parent'],
-        
+
         methods: {
             ...mapActions({
                 getData: 'getData',
