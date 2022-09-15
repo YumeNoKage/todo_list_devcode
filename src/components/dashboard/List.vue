@@ -49,7 +49,7 @@
             <Loading />
         </div>
         <div class="col-12 mt-5 pt-3" v-else-if="data.length > 0 && !isLoading">
-            <div class="row" data-cy="activity-item">
+            <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-12 mb-4 position-relative text-decoration-none" v-for="(item, index) in data" :key="index">
                     <router-link :to="`/detail/${item.id}`" class="card border-0 custome-box-shadow rounded-12 cursor-pointed text-decoration-none text-custome-black" data-cy="activity-item" :id="`item_${index}`" :key="index">
                         <div class="card-body d-flex align-items-end flex-column" style="min-width: 235px; min-height: 234px;">
