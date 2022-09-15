@@ -30,7 +30,7 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateDetail()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle" :data-cy="editTitle ? 'todo-title' : ''">
+                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateTitle()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle" :data-cy="editTitle ? 'todo-title' : ''">
                     <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
@@ -128,7 +128,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-cy="modal-add-close-button"></button>
                     </div>
                     <div class="modal-body px-0">
-                        <form @submit.prevent="todo.id ? updateTodo() : addTodo()">
+                        <form @submit.prevent="todo.id ? updateTodo() : addItem()">
                             <div class="mb-3 modal-body py-0">
                                 <label class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-name-title">NAMA LIST ITEM</label>
                                 <input v-model="todo.title" type="text" class="form-control font-custome-16 fw-custome-400 text-custome-black px-3 py-3" id="inputNameItem" placeholder="Tambahkan nama list item" data-cy="modal-add-name-input" required>
@@ -261,7 +261,7 @@
                 }
             },
 
-            async updateDetail(){
+            async updateTitle(){
                 try {
                     let data = {
                         url : `activity-groups/${this.$route.params.id}`, 
@@ -282,7 +282,7 @@
                 }
             },
             
-            async addTodo(){
+            async addItem(){
                 try {
                     this.isLoading = true
 
