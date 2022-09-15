@@ -84,7 +84,7 @@
                 this.activityName = data.name;
                 this.idActivity = data.id;
 
-                $('#deleteActivity').modal('show')
+                $('#deleteActivity').modal('toggle')
             },
 
             async deleteActivity(url, params){
