@@ -151,7 +151,7 @@
                                         </div>
                                     </li>
                                     <li v-for="(item, i) in getPriority(null, 'option')" :key="i">
-                                        <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" :data-cy="`modal-add-priority-dropdown`">
+                                        <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom ${i == getPriority(null, 'option').length - 1 ? 'border-bottom-12' : ''}`" @click="todo.priority = item.value, todo.priority_name = item.name, todo.color = item.color" data-cy="modal-add-priority-item">
                                             <div class="d-flex align-items-center">
                                                 <div style="width: 14px; height: 14px;" :class="`rounded-circle bg-custome-${item.color}`"></div>
                                                 <span class="ms-3">{{item.name}}</span>
