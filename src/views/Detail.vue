@@ -30,7 +30,7 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateDetail()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle">
+                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateDetail()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle" :data-cy="editTitle ? 'todo-title' : ''">
                     <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" data-cy="todo-title">{{data.title}}</label>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
@@ -118,7 +118,7 @@
         <div class="col-12" v-if="data != null">
             <Detail :showLoading="isLoading" ref="ListTodo" :dataParent="todo_items" @editData="matchFormTodo($event)" @update:Parent="updateParent()"/>
         </div>
-        
+
         <!-- modal add todo -->
         <div class="modal fade" id="addTodo" tabindex="-1" aria-labelledby="addTodoLabel" aria-hidden="true" data-cy="modal-add">
             <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down">

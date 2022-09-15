@@ -27,13 +27,10 @@
                             </div>
                             <div style="width: 14px; height: 14px; transform: translatey(-50%)" :class="`rounded-circle bg-custome-${getPriority(item.priority, null).color} position-absolute top-50 ms-5`" data-cy="todo-item-priority-indicator"></div>
                             <h5 :class="`card-title font-18 fw-custome-500 w-100 mb-0 ms-5 ps-2 ${item.is_active == 0 ? 'text-custome-gray-medium' : 'text-custome-black'}`" data-cy="activity-item-title">
-                                <s v-if="item.is_active == 0" data-cy="todo-item-title">{{item.title}}</s >
-                                <span v-else data-cy="todo-item-title">{{item.title}}</span>
-                                <span>
-                                    <button class="btn bg-transparent border-0" data-cy="todo-item-edit-button" @click="actionToEdit(item)">
-                                        <img class="ms-3" src="../../assets/icons/pencil.svg" alt="edit">
-                                    </button>
-                                </span>
+                                <span :style="item.is_active == 0 ? 'text-decoration: line-through' : ''" data-cy="todo-item-title">{{item.title}}</span>
+                                <button class="btn bg-transparent border-0" data-cy="todo-item-edit-button" @click="actionToEdit(item)">
+                                    <img class="ms-3" src="../../assets/icons/pencil.svg" alt="edit">
+                                </button>
                             </h5>
                             <button class="p-0 border-0 bg-transparent mx-4" data-bs-target="#deleteTodo" data-bs-toggle="modal" @click="idTodo = item.id, todoName = item.title" data-cy="todo-item-delete-button">
                                 <img src="../../assets/icons/trash.svg" alt="delete" width="24">
