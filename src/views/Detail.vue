@@ -31,7 +31,7 @@
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
                     <input type="text" v-model="data.title" class="border-0 border-bottom fw-custome-700" @keypress.enter="editTitle ? (updateDetail(), editTitle = false) : null" @blur="editTitle ? (updateDetail(), editTitle = false) : null" style="outline: none;" v-if="editTitle" data-cy="todo-title">
-                    <span v-else data-cy="todo-title">{{data.title}}</span>
+                    <span v-else @click="editTitle = !editTitle" data-cy="todo-title">{{data.title}}</span>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
                             <img width="24" src="../assets/icons/pencil.svg" alt="edit" v-if="!editTitle">
