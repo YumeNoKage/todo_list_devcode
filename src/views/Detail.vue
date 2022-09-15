@@ -48,11 +48,11 @@
                             </span>
                         </div>
                         <ul class="dropdown-menu py-0 rounded-12" style="min-width: 205px">
-                            <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom border-top-12`" @click="filter= 'latest'" data-cy="sort-latest">
+                            <li data-cy="sort-selection">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom border-top-12`" @click="filter= 'latest'" :data-cy="filter == 'latest' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
-                                        <span><img src="../assets/icons/arrow-sort-desc.svg" alt="sort desc"></span>
-                                        <span class="ms-3">Terbaru</span>
+                                        <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-desc.svg" alt="sort desc"></span>
+                                        <span class="ms-3" data-cy="sort-selection-title">Terbaru</span>
                                     </div>
                                     <div v-if="filter == 'latest'">
                                         <img src="../assets/icons/check.svg" alt="checked">
@@ -60,10 +60,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'oldest'" data-cy="sort-selection">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'oldest'" :data-cy="filter == 'oldest' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
-                                        <span><img src="../assets/icons/arrow-sort-asc.svg" alt="sort asc"></span>
-                                        <span class="ms-3">Terlama</span>
+                                        <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-asc.svg" alt="sort asc"></span>
+                                        <span class="ms-3" data-cy="sort-selection-title">Terlama</span>
                                     </div>
                                     <div v-if="filter == 'oldest'">
                                         <img src="../assets/icons/check.svg" alt="checked">
@@ -71,10 +71,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'az'" data-cy="todo-sort-button">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'az'" :data-cy="filter == 'az' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
-                                        <span><img src="../assets/icons/arrow-sort-az.svg" alt="sort az"></span>
-                                        <span class="ms-3">A-Z</span>
+                                        <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-az.svg" alt="sort az"></span>
+                                        <span class="ms-3" data-cy="sort-selection-title">A-Z</span>
                                     </div>
                                     <div v-if="filter == 'az'">
                                         <img src="../assets/icons/check.svg" alt="checked">
@@ -82,10 +82,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'za'" data-cy="todo-sort-button">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom`" @click="filter= 'za'" :data-cy="filter == 'za' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
-                                        <span><img src="../assets/icons/arrow-sort-za.svg" alt="sort za"></span>
-                                        <span class="ms-3">Z-A</span>
+                                        <span data-cy="sort-selection-icon"><img src="../assets/icons/arrow-sort-za.svg" alt="sort za"></span>
+                                        <span class="ms-3" data-cy="sort-selection-title">Z-A</span>
                                     </div>
                                     <div v-if="filter == 'za'">
                                         <img src="../assets/icons/check.svg" alt="checked">
@@ -93,10 +93,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom-12`" @click="filter= 'unfinished'" data-cy="sort-unfinished">
+                                <div :class="`dropdown-item d-flex align-items-center justify-content-between py-3 border-bottom-12`" @click="filter= 'unfinished'" :data-cy="filter == 'unfinished' ? 'sort-selection-selected' : false">
                                     <div class="d-flex align-items-center">
-                                        <span><img src="../assets/icons/arrows-sort-unfinished.svg" alt="sort unfinished"></span>
-                                        <span class="ms-3">Belum Selesai</span>
+                                        <span data-cy="sort-selection-icon"><img src="../assets/icons/arrows-sort-unfinished.svg" alt="sort unfinished"></span>
+                                        <span class="ms-3" data-cy="sort-selection-title">Belum Selesai</span>
                                     </div>
                                     <div v-if="filter == 'unfinished'">
                                         <img src="../assets/icons/check.svg" alt="checked">
