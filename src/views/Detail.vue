@@ -328,12 +328,13 @@
                     if (response.status == 200) {
                         this.getDetail(`activity-groups/${this.$route.params.id}`, null)
                         // this.message = 'Todo berhasil diupdate'
+
                         
                         // $('#updateTitleNotif').modal('show');
                         
                         this.data = null;
                         // setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},1000)
-
+                        
                         this.todo = {
                             activity_group_id: this.$route.params.id,
                             priority: 'very-high',
@@ -342,6 +343,7 @@
                             title: null,
                         }
                     }
+                    $('#addTodo').modal('hide')
                 } catch (error) {
                     console.error(error);
                 }
