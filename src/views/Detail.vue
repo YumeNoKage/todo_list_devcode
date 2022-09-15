@@ -296,12 +296,12 @@
                         
                         $('#addTodo').modal('hide');
                         
-                        this.message = 'Todo berhasil ditambahkan'
-                        $('#updateTitleNotif').modal('show');
+                        // this.message = 'Todo berhasil ditambahkan'
+                        // $('#updateTitleNotif').modal('show');
                         
                         this.data = null
                         
-                        setTimeout(() =>{$('#updateTitleNotif').modal('hide'); this.message = null},1000)
+                        // setTimeout(() =>{$('#updateTitleNotif').modal('hide'); this.message = null},1000)
                         
                         this.todo = {
                             activity_group_id: this.$route.params.id,
@@ -327,12 +327,12 @@
                     const response = await this.updateData(data);
                     if (response.status == 200) {
                         this.getDetail(`activity-groups/${this.$route.params.id}`, null)
-                        this.message = 'Todo berhasil diupdate'
+                        // this.message = 'Todo berhasil diupdate'
                         
-                        $('#updateTitleNotif').modal('show');
+                        // $('#updateTitleNotif').modal('show');
                         
                         this.data = null;
-                        setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},1000)
+                        // setTimeout(() =>{ $('#updateTitleNotif').modal('hide'), this.message = null},1000)
 
                         this.todo = {
                             activity_group_id: this.$route.params.id,

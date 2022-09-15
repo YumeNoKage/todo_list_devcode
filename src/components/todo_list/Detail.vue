@@ -120,9 +120,9 @@
 
                 if (response.status == 200) {
                     $('#deleteTodo').modal('hide')
-                    $('#deleteTodoNotif').modal('show')
+                    // $('#deleteTodoNotif').modal('show')
 
-                    setTimeout(() =>{console.log('jalan'), $('#deleteTodoNotif').modal('hide')},2000)
+                    // setTimeout(() =>{console.log('jalan'), $('#deleteTodoNotif').modal('hide')},2000)
                     this.updateParent()
                 }
             },
