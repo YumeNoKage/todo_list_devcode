@@ -1,15 +1,15 @@
 <template>
     <div class="row">
-        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data.length == 0 && !isLoading">
+        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data.length == 0 && !isLoading" data-cy="activity-empty-state">
             <img src="../../assets/illustration/activity-empty-state.svg" alt="activity empty state" data-cy="activity-empty-state">
         </div>
         <div class="col-12 mt-5 pt-3" v-if="isLoading">
             <Loading />
         </div>
         <div class="col-12 mt-5 pt-3" v-else-if="data.length > 0 && !isLoading">
-            <div class="row">
+            <div class="row" data-cy="activity-item">
                 <div class="col-lg-3 col-md-4 col-sm-12 mb-4 position-relative" v-for="(item, index) in data" :key="index">
-                    <router-link :to="`/detail/${item.id}`" class="card border-0 custome-box-shadow rounded-12 cursor-pointed text-decoration-none text-custome-black" :data-cy="`activity-item-${index}`">
+                    <router-link :to="`/detail/${item.id}`" class="card border-0 custome-box-shadow rounded-12 cursor-pointed text-decoration-none text-custome-black" data-cy="activity-item">
                         <div class="card-body d-flex align-items-end flex-column" style="min-width: 235px; min-height: 234px;">
                             <h5 class="card-title font-18 fw-custome-700 w-100" data-cy="activity-item-title"   >{{item.title}}</h5>
                             <div class="d-flex justify-content-between mt-auto w-100">
