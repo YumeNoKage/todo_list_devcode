@@ -30,7 +30,7 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <input type="text" focusable id="editTitleTodo" v-model="data.title" :class="`border-0 ${editTitle ? 'border-bottom' : ''} fw-custome-700`" @change="updateTitle(), editTitle = false" @click="editTitle = true" style="outline: none;" data-cy="todo-title" :readonly="!editTitle">
+                    <input type="text" id="editTitleTodo" v-model="data.title" :class="`border-0 ${editTitle ? 'border-bottom' : ''} fw-custome-700`" @change="updateTitle(), editTitle = false" @click="editTitle = true" @blur="editTitle = false" style="outline: none;" data-cy="todo-title" :readonly="!editTitle" focusable>
                     <!-- <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label> -->
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
@@ -129,7 +129,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-cy="modal-add-close-button"></button>
                     </div>
                     <div class="modal-body px-0">
-                        <form @submit.prevent="todo.id ? updateTodo() : addItem()">
+                        <div>
                             <div class="mb-3 modal-body py-0">
                                 <label class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-name-title">NAMA LIST ITEM</label>
                                 <input v-model="todo.title" type="text" class="form-control font-custome-16 fw-custome-400 text-custome-black px-3 py-3" id="inputNameItem" placeholder="Tambahkan nama list item" data-cy="modal-add-name-input" required>
@@ -165,9 +165,9 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
+                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="button" @click="todo.id ? updateTodo() : addItem()" data-cy="modal-add-save-button" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
