@@ -30,12 +30,13 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <input type="text" focusable id="editTitleTodo" v-model="data.title" class="border-0 border-bottom fw-custome-700" @change="editTitle = false, updateTitle()" @blur="editTitle = !editTitle" style="outline: none;" v-show="editTitle" :data-cy="editTitle ? 'todo-title' : ''">
-                    <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label>
+                    <input type="text" focusable id="editTitleTodo" v-model="data.title" :class="`border-0 ${editTitle ? 'border-bottom' : ''} fw-custome-700`" @change="updateTitle(), editTitle = false" @click="editTitle = true" style="outline: none;" data-cy="todo-title" :readonly="!editTitle">
+                    <!-- <label v-show="!editTitle" @click="editTitle = !editTitle" for="editTitleTodo" :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label> -->
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
-                            <img width="24" src="../assets/icons/pencil.svg" alt="edit" v-if="!editTitle">
-                            <img width="24" src="../assets/icons/close.svg" alt="edit" v-if="editTitle">
+                            <img width="24" src="../assets/icons/pencil.svg" alt="edit">
+                            <!-- <img width="24" src="../assets/icons/pencil.svg" alt="edit" v-if="!editTitle"> -->
+                            <!-- <img width="24" src="../assets/icons/close.svg" alt="edit" v-if="editTitle"> -->
                         </button>
                     </span>
                 </div>

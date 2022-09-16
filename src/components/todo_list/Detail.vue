@@ -14,8 +14,8 @@
         <div class="col-12 mt-5 pt-3" v-if="isLoading" data-cy="todo-loading">
             <Loading />
         </div>
-        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data && data.length == 0 && !isLoading">
-            <img src="../../assets/illustration/todo-empty-state.svg" max-width="541" alt="todo empty state" data-cy="todo-empty-state">
+        <div class="col-12 d-flex justify-content-center mt-5 pt-3" v-if="data && data.length == 0 && !isLoading" data-cy="todo-empty-state" @click="actionToEdit(todo)"> 
+            <img src="../../assets/illustration/todo-empty-state.svg" max-width="541" alt="todo empty state">
         </div>
         <div class="col-12 mt-5 pt-3" v-else-if="data && data.length > 0 && !isLoading">
             <div class="row">
@@ -100,6 +100,13 @@
                 isLoading: this.showLoading,
                 idTodo: null,
                 todoName: null,
+                todo:{
+                    activity_group_id: this.$route.params.id,
+                    priority: 'very-high',
+                    priority_name: 'Very High',
+                    color: 'red',
+                    title: null,
+                },
             }
         },
 
