@@ -129,7 +129,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-cy="modal-add-close-button"></button>
                     </div>
                     <div class="modal-body px-0">
-                        <form @submit.prevent="todo.id ? updateTodo() : addItem()" data-cy="modal-add-save-button">
+                        <form @submit.prevent="todo.id && (todo.title != null || todo.title != '') ? updateTodo() : addItem()" data-cy="modal-add-save-button">
                             <div class="mb-3 modal-body py-0">
                                 <label class="form-label font-custome-12 fw-custome-600 text-custome-black" data-cy="modal-add-name-title">NAMA LIST ITEM</label>
                                 <input v-model="todo.title" type="text" class="form-control font-custome-16 fw-custome-400 text-custome-black px-3 py-3" id="inputNameItem" placeholder="Tambahkan nama list item" data-cy="modal-add-name-input" required>
@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" type="submit" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
+                                <button class="btn bg-custome-blue-shoft rounded-pill px-3 text-white font-custome-18 fw-custome-600" :type="todo.title == null || todo.title == '' ? 'button':'submit'" :disabled="todo.title == null || todo.title == '' ? true : false">Simpan</button>
                             </div>
                         </form>
                     </div>
