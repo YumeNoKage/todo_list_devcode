@@ -30,7 +30,7 @@
                     <a href="/" class="border-0 text-decoration-none text-custome-black" data-cy="todo-back-button">
                         <img src="../assets/icons/back-left.svg" alt="back">
                     </a>
-                    <label for="editTitleTodo" hidden :data-cy="!editTitle ? 'todo-title' : ''"><h1 class="font-custome-36 fw-custome-700">{{data.title}}</h1></label>
+                    <label for="editTitleTodo" hidden><h1 class="font-custome-36 fw-custome-700" :data-cy="!editTitle ? 'todo-title' : ''">{{data.title}}</h1></label>
                     <input type="text" id="editTitleTodo" v-model="data.title" :class="`border-0 ${editTitle ? 'border-bottom' : ''} fw-custome-700`" @change="updateTitle(), editTitle = false" @click="editTitle = true" @blur="editTitle = false" style="outline: none;" :data-cy="editTitle ? 'todo-title' : ''" :readonly="!editTitle" :visible="editTitle" focusable>
                     <span class="ms-3">
                         <button class="bg-transparent border-0" @click="editTitle = !editTitle" data-cy="todo-title-edit-button">
